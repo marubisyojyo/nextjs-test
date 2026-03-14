@@ -15,21 +15,22 @@ export default function RootLayout({
             justifyContent:"space-between",
             alignItems:"center",
             padding:"20px 40px",
-            borderBottom:"1px solid #ddd"
+            background:"#111",
+            color:"white"
           }}
         >
 
-          <h2>MySite</h2>
+          <h2 style={{margin:0}}>MySite</h2>
 
           <nav>
-            <Link href="/" style={{marginRight:"20px"}}>Home</Link>
-            <Link href="/about" style={{marginRight:"20px"}}>About</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/" style={{marginRight:"20px",color:"white"}}>Home</Link>
+            <Link href="/about" style={{marginRight:"20px",color:"white"}}>About</Link>
+            <Link href="/contact" style={{color:"white"}}>Contact</Link>
           </nav>
 
         </header>
 
-        <main style={{maxWidth:"1000px",margin:"0 auto"}}>
+        <main style={{maxWidth:"1000px",margin:"40px auto"}}>
           {children}
         </main>
 
