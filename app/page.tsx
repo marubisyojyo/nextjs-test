@@ -5,7 +5,14 @@ export default function Home() {
       <h1 style={{fontSize:"60px"}}>
         My First Website
       </h1>
-
+<img
+  src="https://picsum.photos/800/400"
+  style={{
+    marginTop:"40px",
+    borderRadius:"10px",
+    maxWidth:"100%"
+  }}
+/>
       <p style={{fontSize:"20px", marginTop:"20px"}}>
         Next.jsで作った最初のサイトです
       </p>

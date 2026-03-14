@@ -56,6 +56,17 @@ export default function RootLayout({
 
         <main style={{maxWidth:"1000px",margin:"40px auto"}}>
           {children}
+          
+          <footer
+  style={{
+    marginTop:"80px",
+    padding:"30px",
+    textAlign:"center",
+    borderTop:"1px solid #ccc"
+  }}
+>
+  © 2026 MySite
+</footer>
         </main>
 
       </body>
