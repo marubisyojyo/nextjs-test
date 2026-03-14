@@ -7,19 +7,31 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>
+      <body style={{margin:0,fontFamily:"sans-serif"}}>
 
-        <nav style={{
-          padding: "20px",
-          borderBottom: "1px solid #ccc",
-          fontSize: "18px"
-        }}>
-          <Link href="/" style={{marginRight:"20px"}}>Home</Link>
-          <Link href="/about" style={{marginRight:"20px"}}>About</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
+        <header
+          style={{
+            display:"flex",
+            justifyContent:"space-between",
+            alignItems:"center",
+            padding:"20px 40px",
+            borderBottom:"1px solid #ddd"
+          }}
+        >
 
-        {children}
+          <h2>MySite</h2>
+
+          <nav>
+            <Link href="/" style={{marginRight:"20px"}}>Home</Link>
+            <Link href="/about" style={{marginRight:"20px"}}>About</Link>
+            <Link href="/contact">Contact</Link>
+          </nav>
+
+        </header>
+
+        <main style={{maxWidth:"1000px",margin:"0 auto"}}>
+          {children}
+        </main>
 
       </body>
     </html>
