@@ -10,8 +10,9 @@ export default function RootLayout({
       <body>
 
         <nav style={{
-          padding:"20px",
-          borderBottom:"1px solid #ccc"
+          padding: "20px",
+          borderBottom: "1px solid #ccc",
+          fontSize: "18px"
         }}>
           <Link href="/" style={{marginRight:"20px"}}>Home</Link>
           <Link href="/about" style={{marginRight:"20px"}}>About</Link>
