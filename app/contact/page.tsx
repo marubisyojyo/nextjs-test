@@ -1,49 +1,79 @@
+"use client"
+
+import { useState } from "react"
+import { supabase } from "../../lib/supabase"
+
 export default function Contact() {
+
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [message,setMessage] = useState("")
+
+  const send = async () => {
+
+    const { data, error } = await supabase
+      .from("messages")
+      .insert([
+        {
+          name:name,
+          email:email,
+          message:message
+        }
+      ])
+
+    if(error){
+      alert("送信失敗")
+      console.log(error)
+    }else{
+      alert("送信成功")
+    }
+
+  }
+
   return (
-    <main style={{padding:"80px"}}>
+
+    <main style={{padding:"80px",textAlign:"center"}}>
 
       <h1>Contact</h1>
 
-      <form
-        style={{
-          marginTop:"40px",
-          display:"flex",
-          flexDirection:"column",
-          maxWidth:"400px",
-          gap:"15px"
-        }}
-      >
+      <div style={{maxWidth:"400px",margin:"40px auto"}}>
 
         <input
           placeholder="Your Name"
-          style={{padding:"10px"}}
+          style={{width:"100%",padding:"10px",marginBottom:"10px"}}
+          onChange={(e)=>setName(e.target.value)}
         />
 
         <input
           placeholder="Email"
-          style={{padding:"10px"}}
+          style={{width:"100%",padding:"10px",marginBottom:"10px"}}
+          onChange={(e)=>setEmail(e.target.value)}
         />
 
         <textarea
           placeholder="Message"
-          style={{padding:"10px",height:"120px"}}
+          style={{width:"100%",padding:"10px",height:"120px"}}
+          onChange={(e)=>setMessage(e.target.value)}
         />
 
         <button
           style={{
+            marginTop:"20px",
+            width:"100%",
             padding:"12px",
             background:"#0070f3",
             color:"white",
             border:"none",
-            borderRadius:"6px",
-            cursor:"pointer"
+            borderRadius:"6px"
           }}
+          onClick={send}
         >
           Send
         </button>
 
-      </form>
+      </div>
 
     </main>
-  );
+
+  )
 }
