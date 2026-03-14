@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 export default function RootLayout({
@@ -5,9 +8,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+  const [dark, setDark] = useState(false);
+
   return (
     <html>
-      <body style={{margin:0,fontFamily:"sans-serif"}}>
+      <body
+        style={{
+          margin:0,
+          fontFamily:"sans-serif",
+          background: dark ? "#111" : "#fff",
+          color: dark ? "#fff" : "#000"
+        }}
+      >
 
         <header
           style={{
@@ -15,17 +28,29 @@ export default function RootLayout({
             justifyContent:"space-between",
             alignItems:"center",
             padding:"20px 40px",
-            background:"#111",
-            color:"white"
+            borderBottom:"1px solid #ccc"
           }}
         >
-          <h2 style={{margin:0}}>MySite</h2>
+
+          <h2>MySite</h2>
 
           <nav>
-            <Link href="/" style={{marginRight:"20px",color:"white"}}>Home</Link>
-            <Link href="/about" style={{marginRight:"20px",color:"white"}}>About</Link>
-            <Link href="/contact" style={{color:"white"}}>Contact</Link>
+            <Link href="/" style={{marginRight:"20px"}}>Home</Link>
+            <Link href="/about" style={{marginRight:"20px"}}>About</Link>
+            <Link href="/contact" style={{marginRight:"20px"}}>Contact</Link>
           </nav>
+
+          <button
+            onClick={() => setDark(!dark)}
+            style={{
+              padding:"8px 14px",
+              borderRadius:"6px",
+              border:"none",
+              cursor:"pointer"
+            }}
+          >
+            {dark ? "☀ Light" : "🌙 Dark"}
+          </button>
 
         </header>
 
