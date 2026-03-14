@@ -1,30 +1,39 @@
-export default function Home() {
+import Link from "next/link";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <main style={{textAlign:"center", padding:"80px"}}>
-      
-      <h1 style={{fontSize:"60px"}}>
-        My First Website
-      </h1>
+    <html>
+      <body style={{margin:0,fontFamily:"sans-serif"}}>
 
-      <p style={{fontSize:"20px", marginTop:"20px"}}>
-        Next.jsで作った最初のサイトです
-      </p>
+        <header
+          style={{
+            display:"flex",
+            justifyContent:"space-between",
+            alignItems:"center",
+            padding:"20px 40px",
+            background:"#111",
+            color:"white"
+          }}
+        >
+          <h2 style={{margin:0}}>MySite</h2>
 
-      <button
-        style={{
-          marginTop:"40px",
-          padding:"15px 30px",
-          fontSize:"18px",
-          background:"#0070f3",
-          color:"white",
-          border:"none",
-          borderRadius:"10px",
-          cursor:"pointer"
-        }}
-      >
-        Get Started
-      </button>
+          <nav>
+            <Link href="/" style={{marginRight:"20px",color:"white"}}>Home</Link>
+            <Link href="/about" style={{marginRight:"20px",color:"white"}}>About</Link>
+            <Link href="/contact" style={{color:"white"}}>Contact</Link>
+          </nav>
 
-    </main>
+        </header>
+
+        <main style={{maxWidth:"1000px",margin:"40px auto"}}>
+          {children}
+        </main>
+
+      </body>
+    </html>
   );
 }
