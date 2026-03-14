@@ -1,40 +1,59 @@
-import Link from "next/link";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Home() {
   return (
-    <html>
-      <body style={{margin:0,fontFamily:"sans-serif"}}>
+    <main
+      style={{
+        textAlign: "center",
+        padding: "120px 20px"
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "64px",
+          marginBottom: "20px"
+        }}
+      >
+        Build Something Amazing
+      </h1>
 
-        <header
+      <p
+        style={{
+          fontSize: "22px",
+          color: "#555",
+          marginBottom: "40px"
+        }}
+      >
+        Next.jsで作るモダンWebサイト
+      </p>
+
+      <div>
+        <button
           style={{
-            display:"flex",
-            justifyContent:"space-between",
-            alignItems:"center",
-            padding:"20px 40px",
-            background:"#111",
-            color:"white"
+            padding: "15px 30px",
+            fontSize: "18px",
+            marginRight: "20px",
+            background: "#0070f3",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer"
           }}
         >
+          Get Started
+        </button>
 
-          <h2 style={{margin:0}}>MySite</h2>
-
-          <nav>
-            <Link href="/" style={{marginRight:"20px",color:"white"}}>Home</Link>
-            <Link href="/about" style={{marginRight:"20px",color:"white"}}>About</Link>
-            <Link href="/contact" style={{color:"white"}}>Contact</Link>
-          </nav>
-
-        </header>
-
-        <main style={{maxWidth:"1000px",margin:"40px auto"}}>
-          {children}
-        </main>
-
-      </body>
-    </html>
+        <button
+          style={{
+            padding: "15px 30px",
+            fontSize: "18px",
+            background: "#eee",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer"
+          }}
+        >
+          Contact
+        </button>
+      </div>
+    </main>
   );
 }
