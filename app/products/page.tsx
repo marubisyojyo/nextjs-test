@@ -1,51 +1,82 @@
 import { supabase } from "@/lib/supabase"
 
-export default async function ProductPage({ params }: any) {
+export default async function Products() {
 
-  const id = params.id
-
-  const { data: product, error } = await supabase
+  const { data: products, error } = await supabase
     .from("products")
     .select("*")
-    .eq("id", id)
-    .single()
+    .order("created_at", { ascending: false })
 
-  if (!product || error) {
-    return <div style={{ padding: "40px" }}>商品が見つかりません</div>
+  if (error) {
+    return <div style={{ padding: "40px" }}>エラー: {error.message}</div>
   }
 
   return (
-    <div
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        padding: "40px",
-      }}
-    >
-      <img
-        src={product.image_url}
+    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 20px" }}>
+      <h1 style={{ fontSize: "36px", marginBottom: "24px" }}>商品一覧</h1>
+
+      <div
         style={{
-          width: "100%",
-          maxWidth: "500px",
-          borderRadius: "10px",
-        }}
-      />
-
-      <h1>{product.title}</h1>
-
-      <p style={{ fontSize: "20px" }}>
-        {product.points} ポイント
-      </p>
-
-      <button
-        style={{
-          padding: "12px 24px",
-          fontSize: "18px",
-          cursor: "pointer",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          gap: "24px",
         }}
       >
-        購入する
-      </button>
+        {products?.map((product) => (
+          <a
+            href={`/products/${product.id}`}
+            key={product.id}
+            style={{
+              border: "1px solid #ddd",
+              borderRadius: "12px",
+              overflow: "hidden",
+              background: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+              textDecoration: "none",
+              color: "inherit"
+            }}
+          >
+            <img
+              src={product.image_url}
+              alt={product.title}
+              style={{
+                width: "100%",
+                height: "220px",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+
+            <div style={{ padding: "16px" }}>
+              <h3 style={{ fontSize: "20px", marginBottom: "12px" }}>
+                {product.title}
+              </h3>
+
+              <p
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "16px",
+                }}
+              >
+                {product.points} ポイント
+              </p>
+
+              <button
+                style={{
+                  width: "100%",
+                  padding: "12px",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                }}
+              >
+                詳細を見る
+              </button>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   )
 }
