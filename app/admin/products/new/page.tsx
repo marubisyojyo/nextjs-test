@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { supabase } from "@/lib/supabase"
 
-export default function NewProduct(){
+export default function NewProduct() {
 
 const [title,setTitle] = useState("")
 const [points,setPoints] = useState("")
@@ -24,14 +24,15 @@ image_url:image
 ])
 
 if(error){
-alert("エラー")
+alert(error.message)
+}
 }else{
 alert("商品登録成功")
 }
 
 }
 
-return(
+return (
 
 <div style={{padding:"40px"}}>
 
@@ -72,5 +73,4 @@ onChange={(e)=>setImage(e.target.value)}
 </div>
 
 )
-
 }
