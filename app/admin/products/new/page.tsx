@@ -13,6 +13,11 @@ const handleSubmit = async (e:any) => {
 
 e.preventDefault()
 
+if(!title || !points || !image){
+alert("すべて入力してください")
+return
+}
+
 const { error } = await supabase
 .from("products")
 .insert([
