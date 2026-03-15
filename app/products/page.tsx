@@ -22,7 +22,8 @@ export default async function Products() {
         }}
       >
         {products?.map((product) => (
-          <div
+          <a
+            href={`/products/${product.id}`}
             key={product.id}
             style={{
               border: "1px solid #ddd",
@@ -30,6 +31,8 @@ export default async function Products() {
               overflow: "hidden",
               background: "#fff",
               boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+              textDecoration: "none",
+              color: "inherit"
             }}
           >
             <img
@@ -70,7 +73,7 @@ export default async function Products() {
                 詳細を見る
               </button>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
