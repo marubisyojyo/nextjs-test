@@ -72,6 +72,19 @@ onChange={(e)=>setImage(e.target.value)}
 
 <br/><br/>
 
+{image && (
+<img
+src={image}
+style={{
+width:"200px",
+marginTop:"20px",
+borderRadius:"10px"
+}}
+/>
+)}
+
+<br/><br/>
+
 <button type="submit">
 登録
 </button>
