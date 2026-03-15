@@ -27,6 +27,10 @@ if(error){
 alert(error.message)
 }else{
 alert("商品登録成功")
+
+setTitle("")
+setPoints("")
+setImage("")
 }
 
 }
