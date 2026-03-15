@@ -1,6 +1,6 @@
 import { supabase } from "@/lib/supabase"
 
-export default async function ProductPage({ params }: any) {
+export default async function ProductPage({ params }: { params: { id: string } }) {
 
   const id = params.id
 
