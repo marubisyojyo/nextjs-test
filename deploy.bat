@@ -14,8 +14,21 @@ if %errorlevel%==0 (
     exit
 )
 
-git commit -m "update"
+set /p msg=Commit message:
+
+git commit -m "%msg%"
+if %errorlevel% neq 0 (
+    echo Commit failed
+    pause
+    exit
+)
+
 git push origin main
+if %errorlevel% neq 0 (
+    echo Push failed
+    pause
+    exit
+)
 
 echo.
 echo =====================

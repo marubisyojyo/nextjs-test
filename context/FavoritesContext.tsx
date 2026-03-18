@@ -1,17 +1,17 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState, type Dispatch, type ReactNode, type SetStateAction } from "react"
 import { supabase } from "@/lib/supabase"
 
 type FavoritesContextType = {
   favoritesCount: number
-  setFavoritesCount: React.Dispatch<React.SetStateAction<number>>
+  setFavoritesCount: Dispatch<SetStateAction<number>>
   loadFavoritesCount: () => Promise<void>
 }
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null)
 
-export function FavoritesProvider({ children }: { children: React.ReactNode }) {
+export function FavoritesProvider({ children }: { children: ReactNode }) {
   const [favoritesCount, setFavoritesCount] = useState(0)
 
   const loadFavoritesCount = async () => {

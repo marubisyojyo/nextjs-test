@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase"
 import { useParams, useRouter } from "next/navigation"
 
 export default function EditProduct(){
 
-const params = useParams()
+const params = useParams<{ id: string }>()
 const router = useRouter()
 
 const id = params.id as string
@@ -74,7 +74,7 @@ setCategories(data || [])
 
 /* 更新 */
 
-const updateProduct = async(e:any)=>{
+const updateProduct = async(e: FormEvent<HTMLFormElement>)=>{
 
 e.preventDefault()
 
